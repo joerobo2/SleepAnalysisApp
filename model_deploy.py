@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 import pickle
-conda install scikit-learn
+from requirements import scikit-learn
 from sklearn.preprocessing import StandardScaler, PolynomialFeatures
 from sklearn.ensemble import HistGradientBoostingRegressor
 
