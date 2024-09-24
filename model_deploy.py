@@ -96,4 +96,4 @@ if st.button('Predict'):
 
     # Display prediction
     st.write('Predicted Cumulative GPA:')
-    st.success(prediction)
+    st.success(round(prediction))
