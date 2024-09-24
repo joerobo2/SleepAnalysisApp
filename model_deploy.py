@@ -25,17 +25,27 @@ def set_background(url, width="100%", height="auto", position="center center"):
 st.set_page_config(page_title="Sleep Analysis", page_icon="")  # Set page title and icon
 
 
-# Load the best model and scaler
+# Function to load model and scaler based on user selection
 @st.cache_data
-def load_assets():
-    with open('histgradientboostingregressor_model.pkl', 'rb') as f:
+def load_assets(selected_model):
+    model_filename = f"{selected_model}.pkl"  # Construct filename based on selection
+    with open(model_filename, 'rb') as f:
         best_model = pickle.load(f)
-    with open('scaler.pkl', 'rb') as f:  # Load the scaler
+    with open('scaler.pkl', 'rb') as f:  # Load the scaler (assuming it's the same)
         scaler = pickle.load(f)
     return best_model, scaler
 
 
-best_model, scaler = load_assets()
+# User selection for model
+selected_model = st.sidebar.selectbox("Choose Prediction Model",
+                                      ['randomforestregressor_model',
+                                       'mlpregressor_model',
+                                       'elasticnet_model',
+                                       'svr_model',
+                                       'histgradientboostingregressor_model'])
+
+# Load assets based on selection
+best_model, scaler = load_assets(selected_model)
 
 # Set the background image (Use raw string to avoid unicode error)
 # Set the background image with adjusted size and position
