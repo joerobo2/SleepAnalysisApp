@@ -49,7 +49,7 @@ st.markdown("""
     .stApp {
         background: url("https://my-wall-clock.com/cdn/shop/articles/Leonardo_Diffusion_XL_A_bedroom_with_an_alarm_clock_that_emit_0_1344x.jpg?v=1706073439");
         background-size: cover;
-        background-position: bottom right;
+        background-position: center right;
     }
 }
 </style>
