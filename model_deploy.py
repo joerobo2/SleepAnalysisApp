@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 import pickle
 from sklearn.preprocessing import StandardScaler, PolynomialFeatures
-from sklearn.ensemble import HistGradientBoostingRegressor, RandomForestRegressor, MLPRegressor, ElasticNet, SVR
+from sklearn.ensemble import HistGradientBoostingRegressor, RandomForestRegressor
 
 
 # Function to set the background image
@@ -38,11 +38,8 @@ def load_assets(selected_model):
 
 # User selection for model
 model_options = {
-    "Random Forest Regression": "randomforestregressor_model.pkl",
-    "Multi-Layer Perceptron": "mlpregressor_model.pkl",
-    "Elastic Net": "elasticnet_model.pkl",
-    "Support Vector Regression": "svr_model.pkl",
-    "Histogram Gradient Boosting": "histgradientboostingregressor_model.pkl",
+    "Random Forest Regression": "randomforestregressor_model",
+    "Histogram Gradient Boosting": "histgradientboostingregressor_model",
 }
 selected_model = st.sidebar.selectbox("Choose Prediction Model", list(model_options.keys()))
 
