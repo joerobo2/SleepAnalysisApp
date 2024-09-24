@@ -46,7 +46,23 @@ best_model, scaler = load_assets(model_options[selected_model])
 set_background('https://my-wall-clock.com/cdn/shop/articles/Leonardo_Diffusion_XL_A_bedroom_with_an_alarm_clock_that_emit_0_1344x.jpg?v=1706073439', width="84%", height="109%", position='right')
 
 # Streamlit app title
-st.title('Sleep Well, Achieve More: Sleep Analysis Model')
+title_container = st.container()
+with title_container:
+    st.title('Sleep Well, Achieve More: Sleep Analysis Model')
+
+# Adjust layout for mobile screens
+st.markdown("""
+<style>
+@media only screen and (max-width: 768px) {
+    .stApp {
+        flex-direction: column;
+    }
+    #title {
+        font-size: 1.5rem;
+    }
+}
+</style>
+""", unsafe_allow_html=True)
 
 # User input
 st.sidebar.header('Track Your Sleep Habits')
