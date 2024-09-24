@@ -42,8 +42,18 @@ selected_model = st.sidebar.selectbox("Choose Prediction Model", list(model_opti
 # Load assets based on selection
 best_model, scaler = load_assets(model_options[selected_model])
 
-# Set the background image
-set_background('https://my-wall-clock.com/cdn/shop/articles/Leonardo_Diffusion_XL_A_bedroom_with_an_alarm_clock_that_emit_0_1344x.jpg?v=1706073439', width="84%", height="109%", position='right')
+# Set the background image only for desktops
+st.markdown("""
+<style>
+@media only screen and (min-width: 768px) {
+    .stApp {
+        background: url("https://my-wall-clock.com/cdn/shop/articles/Leonardo_Diffusion_XL_A_bedroom_with_an_alarm_clock_that_emit_0_1344x.jpg?v=1706073439");
+        background-size: cover;
+        background-position: top center;
+    }
+}
+</style>
+""", unsafe_allow_html=True)
 
 # Streamlit app title
 title_container = st.container()
