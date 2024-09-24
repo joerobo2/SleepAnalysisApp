@@ -4,37 +4,33 @@ import pickle
 from sklearn.preprocessing import StandardScaler, PolynomialFeatures
 from sklearn.ensemble import HistGradientBoostingRegressor, RandomForestRegressor
 
-
 # Function to set the background image
 def set_background(url, width="100%", height="auto", position="center center"):
     st.markdown(
         f"""
-         <style>
-         .stApp {{
-             background: url("{url}");
-             background-size: {width} {height};
-             background-position: {position};
-         }}
-         </style>
-         """,
+        <style>
+        .stApp {{
+            background: url("{url}");
+            background-size: {width} {height};
+            background-position: {position};
+        }}
+        </style>
+        """,
         unsafe_allow_html=True
     )
 
-
 # Streamlit app with sleep wellness theme background
-st.set_page_config(page_title="Sleep Analysis", page_icon="")  # Set page title and icon
-
+st.set_page_config(page_title="Sleep Analysis", page_icon="")
 
 # Function to load model and scaler based on user selection
 @st.cache_data
 def load_assets(selected_model):
-    model_filename = f"{selected_model}.pkl"  # Construct filename based on selection
+    model_filename = f"{selected_model}.pkl"
     with open(model_filename, 'rb') as f:
         best_model = pickle.load(f)
-    with open('scaler.pkl', 'rb') as f:  # Load the scaler (assuming it's the same)
+    with open('scaler.pkl', 'rb') as f:
         scaler = pickle.load(f)
     return best_model, scaler
-
 
 # User selection for model
 model_options = {
@@ -46,9 +42,8 @@ selected_model = st.sidebar.selectbox("Choose Prediction Model", list(model_opti
 # Load assets based on selection
 best_model, scaler = load_assets(model_options[selected_model])
 
-# Set the background image (Use raw string to avoid unicode error)
-# Set the background image with adjusted size and position
-set_background('https://my-wall-clock.com/cdn/shop/articles/Leonardo_Diffusion_XL_A_bedroom_with_an_alarm_clock_that_emit_0_1344x.jpg?v=1706073439', width="84%", height="109%", position='right')  # Adjust width and height as desired
+# Set the background image
+set_background('https://my-wall-clock.com/cdn/shop/articles/Leonardo_Diffusion_XL_A_bedroom_with_an_alarm_clock_that_emit_0_1344x.jpg?v=1706073439', width="84%", height="109%", position='right')
 
 # Streamlit app title
 st.title('Sleep Well, Achieve More: Sleep Analysis Model')
@@ -95,8 +90,8 @@ input_data = pd.DataFrame([[
 scaled_input_data = scaler.transform(input_data[feature_names])
 
 # Define the polynomial features transformer and transform the scaled input data
-poly_features = PolynomialFeatures(degree=2)  # You can specify the degree of polynomial features required
-poly_transformed_data = poly_features.fit_transform(scaled_input_data)  # Fit and transform the data
+poly_features = PolynomialFeatures(degree=2)
+poly_transformed_data = poly_features.fit_transform(scaled_input_data)
 
 # Prediction button
 if st.button('Predict'):
