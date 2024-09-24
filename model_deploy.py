@@ -5,7 +5,7 @@ from sklearn.preprocessing import StandardScaler, PolynomialFeatures
 from sklearn.ensemble import HistGradientBoostingRegressor, RandomForestRegressor
 
 # Function to set the background image
-def set_background(url, width="100%", height="auto", position="center center"):
+def set_background(url, width="84%", height="109", position="right"):
     st.markdown(
         f"""
         <style>
