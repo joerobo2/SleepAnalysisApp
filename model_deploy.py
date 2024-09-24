@@ -38,11 +38,11 @@ def load_assets(selected_model):
 
 # User selection for model
 model_options = {
-    "Random Forest Regression": "random_forest_regressor_model",
-    "Multi-Layer Perceptron": "multi_layer_perceptron_model",
-    "Elastic Net": "elastic_net_model",
-    "Support Vector Regression": "support_vector_regression_model",
-    "Histogram Gradient Boosting": "histogram_gradient_boosting_regressor_model",
+    "Random Forest Regression": "randomforestregressor_model.pkl",
+    "Multi-Layer Perceptron": "mlpregressor_model.pkl",
+    "Elastic Net": "elasticnet_model.pkl",
+    "Support Vector Regression": "svr_model.pkl",
+    "Histogram Gradient Boosting": "histgradientboostingregressor_model.pkl",
 }
 selected_model = st.sidebar.selectbox("Choose Prediction Model", list(model_options.keys()))
 
